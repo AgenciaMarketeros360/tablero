@@ -2021,7 +2021,8 @@
 
   // Aviso en la pantalla de proyectos si hace tiempo que no se guarda una copia en este navegador
   function actualizarAvisoCopia() {
-    const hayDatos = proyectos.length > 0 || tareas.length > 0;
+    // El recordatorio de copia es solo para las cuentas administradoras
+    const hayDatos = !!(yo && yo.esAdmin) && (proyectos.length > 0 || tareas.length > 0);
     const ultima = leerAjuste("ultimaCopia");
     let mensaje = "";
     if (hayDatos) {
